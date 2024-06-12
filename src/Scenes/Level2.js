@@ -23,7 +23,7 @@ class Level2 extends Phaser.Scene {
     create() {
 
         document.getElementById('description').innerHTML = '<h2>Game4b</h2><br>Left: A // D: Right // Space: jump // S: Ground pound // Space while slding down wall: Wall jump //'
-        this.map2 = this.add.tilemap("platformer-level-3", 18, 18, 50, 40); //2 oe 3
+        this.map2 = this.add.tilemap("platformer-level-3", 18, 18, 50, 40); 
         this.tileset1 = this.map2.addTilesetImage("factory_tileset_packed", "tilemap_tiles2"); 
         this.tileset2 = this.map2.addTilesetImage("forest", "tilemap_tiles"); 
         this.tileset3 = this.map2.addTilesetImage("blocks", "stone_tiles");
@@ -48,9 +48,6 @@ class Level2 extends Phaser.Scene {
                 break; 
             }
         }
-
-        
-        
         if (!this.vfx) {
             this.vfx = {};
         }
@@ -63,7 +60,6 @@ class Level2 extends Phaser.Scene {
         });
 
         this.vfx.walking.stop();
-        //testing
 
         this.left = this.input.keyboard.addKey("A"); 
         this.right = this.input.keyboard.addKey("D"); 
@@ -79,7 +75,6 @@ class Level2 extends Phaser.Scene {
 
         this.cameras.main.setBounds(0, 0, this.map2.widthInPixels * 2, this.map2.heightInPixels * 2); 
         this.cameras.main.startFollow(this.player); 
-        //this.cameras.main.setDeadZone(200, 200); 
         this.cameras.main.setZoom(1.5);  
 
         this.physics.world.setBounds(0, 0, this.map2.widthInPixels * 2, this.map2.heightInPixels * 2);
@@ -258,8 +253,6 @@ class Level2 extends Phaser.Scene {
 
     }
 
-    
-
     update() {
         this.player.update(); 
          
@@ -279,8 +272,6 @@ class Level2 extends Phaser.Scene {
         let tiles = this.groundLayer.getTilesWithinShape(playerRect);
         for (let tile of tiles) {
             if (tile.properties.flag) {
-                /*this.player.updateRespawn(this.checkpoint.x * 2, this.checkpoint.y * 2); 
-                break;*/
                 let worldPoint = this.map2.tileToWorldXY(tile.x, tile.y);
 
                 this.player.updateRespawn(worldPoint.x, worldPoint.y);

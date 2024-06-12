@@ -9,23 +9,15 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
         this.respawnX = x; 
         this.respawnY = y; 
-
-        //this.checkPointTimerMax = 3000; 
-        //this.checkPointTimer = 0; 
         this.checkPoint = false; 
         this.wallSlide = false; 
         this.landCoolDown = false; 
         this.airborne = false; 
         this.stomp = false; 
 
-        //this.isJumping = false; 
-        //this.jumpStartTime = 0; 
-        //this.MAX_JUMP_TIME = 100; 
-
-        // variables and settings
         this.ACCELERATION = 700;
-        this.DRAG = 1500;    // DRAG < ACCELERATION = icy slide
-        this.JUMP_VELOCITY = -800; //-900 default
+        this.DRAG = 1500;  
+        this.JUMP_VELOCITY = -800; 
         this.GRAVITY_DOWN = 500; 
         this.MAX_FALL_SPEED = 1000; 
         this.MAX_SPEED = 300; 
@@ -47,18 +39,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
     update(){
         let acceleration = this.ACCELERATION;
-    // If the player is in the air, reduce the acceleration to half
-    /*if(!this.body.blocked.down){
-        acceleration /= 2;
-
-        
-    }*/
-    //console.log(this.vfx);     
+    
         if(this.leftKey.isDown){
-                if(this.body.velocity.x > 0){
-                    //this.body.setAccelerationX(0);
-                    //this.body.setVelocityX(0);
-                }
                 this.body.setAccelerationX(-acceleration); 
                 this.resetFlip(); 
                 this.anims.play('walk', true); 
@@ -67,20 +49,12 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
                 this.vfx.walking.setParticleSpeed(this.PARTICLE_VELOCITY, 0);
     
-                // Only play smoke effect if touching the ground
-    
                 if (this.body.blocked.down) {
-    
                     this.vfx.walking.start();
-                    
                 }
             }
             else if(this.rightKey.isDown){
-                if(this.body.velocity.x < 0){
-                    //this.body.setAccelerationX(0);
-                    //this.body.setVelocityX(0); //remove?
-                }
-                this.body.setAccelerationX(acceleration); //this.acceleration 
+                this.body.setAccelerationX(acceleration);
                 this.setFlip(true, false); 
                 this.anims.play('walk', true); 
 
@@ -88,12 +62,8 @@ class Player extends Phaser.Physics.Arcade.Sprite{
 
                 this.vfx.walking.setParticleSpeed(-this.PARTICLE_VELOCITY, 0);
     
-                // Only play smoke effect if touching the ground
-    
-                if (this.body.blocked.down) {
-    
+                if (this.body.blocked.down) {    
                     this.vfx.walking.start();
-                    
                 }
             }
             else{
@@ -122,12 +92,10 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             }
             
             if(this.airborne){
-                this.airborne = false;
-                //this.stomp = false; 
+                this.airborne = false; 
                 if(!this.landCoolDown){
                     this.setScale(2.0, 1.0); 
                     this.landCoolDown = true;
-                    // Add a timer event to reset the scale after 100ms
                     this.scene.time.delayedCall(100, () => {
                         this.setScale(1.5, 1.5);
                         this.landCoolDown = false;
@@ -143,8 +111,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.scene.sound.play("playerJump");
             this.setScale(1.3, 1.7);
             this.airborne = true; 
-            //this.isJumping = true; 
-            //this.jumpStartTime = this.scene.time.now; 
         }
         
 
@@ -184,8 +150,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
         this.scene.sound.play("die"); 
         this.x = this.respawnX; 
         this.y = this.respawnY; 
-         
-        //console.log(`Respawn coordinates: x = ${this.x}, y = ${this.y}`); 
     }
 
     updateRespawn(x, y){
@@ -193,8 +157,6 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             this.scene.sound.play("checkpoint"); 
             this.respawnX = x; 
             this.respawnY = y; 
-            //this.checkPoint = true; 
-            console.log("Updated respawn!");
         }
     }
 

@@ -24,7 +24,7 @@ class Platformer extends Phaser.Scene {
 
 
         document.getElementById('description').innerHTML = '<h2>Game4b</h2><br>Left: A // D: Right // Space: jump // S: Ground pound // Space while slding down wall: Wall jump //'
-        this.map2 = this.add.tilemap("platformer-level-2", 18, 18, 50, 40); //2 oe 3
+        this.map2 = this.add.tilemap("platformer-level-2", 18, 18, 50, 40); 
         this.tileset1 = this.map2.addTilesetImage("factory_tileset_packed", "tilemap_tiles2"); 
         this.tileset2 = this.map2.addTilesetImage("forest", "tilemap_tiles"); 
         this.tileset3 = this.map2.addTilesetImage("blocks", "stone_tiles");
@@ -49,12 +49,6 @@ class Platformer extends Phaser.Scene {
                 break; 
             }
         }
-
-        if (this.initalSpawn) {
-            console.log(`PlayerSpawn coordinates: x = ${this.initalSpawn.x}, y = ${this.initalSpawn.y}`);
-        } else {
-            console.log('PlayerSpawn object not found');
-        }
         
         if (!this.vfx) {
             this.vfx = {};
@@ -68,7 +62,6 @@ class Platformer extends Phaser.Scene {
         });
 
         this.vfx.walking.stop();
-        //testing
 
         this.left = this.input.keyboard.addKey("A"); 
         this.right = this.input.keyboard.addKey("D"); 
@@ -84,7 +77,6 @@ class Platformer extends Phaser.Scene {
 
         this.cameras.main.setBounds(0, 0, this.map2.widthInPixels * 2, this.map2.heightInPixels * 2); 
         this.cameras.main.startFollow(this.player); 
-        //this.cameras.main.setDeadZone(200, 200); 
         this.cameras.main.setZoom(1.5);  
 
         this.physics.world.setBounds(0, 0, this.map2.widthInPixels * 2, this.map2.heightInPixels * 2);
@@ -133,24 +125,7 @@ class Platformer extends Phaser.Scene {
             key: "rock_sheet", 
             frame: 15
         }); 
-
-        /*this.eSpawn; 
-        for(let object of this.objectLayer.objects){
-            if(object.name === 'EnemySpawn'){
-                this.eSpawn = object; 
-            }
-        }
-
-        this.enemy = this.add.sprite(this.eSpawn.x * 2,  this.eSpawn.y *2, "enemy1"); 
-        this.enemy.setScale(2); 
-        this.physics.world.enable(this.enemy, Phaser.Physics.Arcade.BODY);
-        this.enemy.body.allowGravity = false;
-        this.enemy.body.immovable = true; 
-        this.physics.add.collider(this.player, this.enemy, (player, enemy) => {
-            this.enemyCallback(player, enemy); 
-        }, null, this); */
-
-        
+     
         this.moves.forEach(platform => {
             platform.setScale(2); 
             platform.x *= 2; 
@@ -268,10 +243,7 @@ class Platformer extends Phaser.Scene {
             obj2.destroy();
             let gameWinSound = this.sound.add("gameWin");
 
-            // Play the sound
             gameWinSound.play();
-
-            // Attach an event listener to the sound
             gameWinSound.once('complete', () => {
                 this.scene.start('platformerScene2');
             });
@@ -295,8 +267,6 @@ class Platformer extends Phaser.Scene {
         this.Scoretext.x = this.cameras.main.scrollX + 250;
         this.Scoretext.y = this.cameras.main.scrollY + 150;
 
-        //console.log("Camera " + this.Scoretext.x + "," + this.Scoretext.y); 
-
         var worldPoint = this.player.body.position;
         this.moves.forEach(platform => {
             platform.update();
@@ -311,8 +281,6 @@ class Platformer extends Phaser.Scene {
         let tiles = this.groundLayer.getTilesWithinShape(playerRect);
         for (let tile of tiles) {
             if (tile.properties.flag) {
-                /*this.player.updateRespawn(this.checkpoint.x * 2, this.checkpoint.y * 2); 
-                break;*/
                 let worldPoint = this.map2.tileToWorldXY(tile.x, tile.y);
 
                 this.player.updateRespawn(worldPoint.x, worldPoint.y);

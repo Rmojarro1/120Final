@@ -59,18 +59,8 @@ class Load extends Phaser.Scene {
                 { frame: "tile_0001.png" }
             ],
         });
-
-        
-
-        //const jumpSound = this.sound.add('playerJump'); 
-        
-        
-
-         // ...and pass to the next Scene
          this.scene.start("titleScreen");
     }
-
-    // Never get here since a new scene is started in create()
     update() {
     }
 }
