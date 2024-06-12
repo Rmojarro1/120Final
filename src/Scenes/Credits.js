@@ -12,7 +12,7 @@ class Credits extends Phaser.Scene{
     create(){
         this.nextScene = this.input.keyboard.addKey("ENTER");
 
-        this.winText = this.add.text(200, 250, 'Developed by Raul Mojarro, assets from Kenny Assets', {fontSize:'24px', fill: '#000' });  
+        this.winText = this.add.text(200, 250, 'Developed by Raul Mojarro, assets from Kenny Assets, level music from cyanmusic on OpenGameArt.Org, sound effects from dklon on OpenGaneArt.org', {fontSize:'24px', fill: '#000' });  
         this.winText.setColor('#FFFFFF');
 
         this.returnText = this.add.text(150, 500, 'Press Enter to return to title screen', {fontSize: '24px', fill: '#000'});

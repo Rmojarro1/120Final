@@ -250,6 +250,11 @@ class Platformer extends Phaser.Scene {
 
         });
 
+        this.music = this.sound.add("levelMusic"); 
+        this.music.play({
+            loop: true
+        }); 
+
         this.Scoretext = this.add.text(16, 16, 'Score: ', { font: '64px Courier', fill: '#00ff00' });
         this.Scoretext.setColor('#ff0000'); 
 
