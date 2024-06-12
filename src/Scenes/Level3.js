@@ -142,7 +142,7 @@ class Level3 extends Phaser.Scene {
 
             platform.update = function() {
 
-                const speed = 50;
+                const speed = 100;
                 let dirX, dirY;
                 if (this.return) {
                     dirX = this.startX - this.x;
