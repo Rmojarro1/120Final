@@ -506,6 +506,61 @@
                  "width":0,
                  "x":474,
                  "y":441
+                }, 
+                {
+                 "height":0,
+                 "id":87,
+                 "name":"EnemyEnd",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":504.457198681158,
+                 "y":94.5170350470143
+                }, 
+                {
+                 "height":0,
+                 "id":88,
+                 "name":"EnemyEnd",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":612.162657223104,
+                 "y":513.249481011113
+                }, 
+                {
+                 "height":0,
+                 "id":89,
+                 "name":"EnemyEnd",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":278.055928684821,
+                 "y":434.118940041519
+                }, 
+                {
+                 "height":0,
+                 "id":90,
+                 "name":"EnemyEnd",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":489.070704603737,
+                 "y":290.145316888509
+                }, 
+                {
+                 "height":0,
+                 "id":91,
+                 "name":"EnemyEnd",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":318.720234460862,
+                 "y":436.317010624008
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -514,7 +569,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":84,
+ "nextobjectid":92,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
